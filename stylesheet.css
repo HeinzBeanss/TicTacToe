@@ -18,7 +18,7 @@ body {
     margin-bottom: 40px;
     font-weight: 400;
     font-size: 2.4rem;
-    border-bottom: 1px solid rgb(212, 255, 246);
+    border-bottom: 1px solid #00735b;
 }
 
 .main {
@@ -56,7 +56,7 @@ body {
     height: clamp(300px, 500px, 600px);
     width: clamp(300px, 500px, 600px);
     padding: 10px;
-    border: 2px solid rgb(212, 255, 246);
+    border: 2px solid #00735b;;
     display: grid;
     gap: 10px;
     grid-template-columns: repeat(3, 1fr);
@@ -94,7 +94,7 @@ body {
     width: 200px;
     height: 30px;
     background-color: #2e2e2e;
-    border: 1px solid rgb(212, 255, 246);
+    border: 1px solid #00735b;;
     color: white;
     border-radius: 0.3rem;
     font-size: 0.9rem;
@@ -116,7 +116,7 @@ label {
 input {
     background-color: #2e2e2e;
     border-radius: 0.3rem;
-    border: solid 1px rgb(212, 255, 246);
+    border: solid 1px #00735b;;
     margin-top: 2px;
     padding-left: 10px;
     height: 30px;
@@ -130,7 +130,7 @@ input:disabled {
 }
 
 .titles {
-    color: rgb(212, 255, 246);
+    color: #119278;
     font-size: 1rem;
     font-weight: 500;
     text-align: center;
