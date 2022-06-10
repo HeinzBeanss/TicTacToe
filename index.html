@@ -8,28 +8,71 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;500;600;700&display=swap" rel="stylesheet">
-    <title>Title!</title>
+    <title>Tic-Tac-Toe</title>
 </head>
 <body>
-    <h1 class="header">TIC TAC TOE</h1>
-    <div class="gameboard">
-        <button class="tile" id="0"></button>
-        <button class="tile" id="1"></button>
-        <button class="tile" id="2"></button>
-        <button class="tile" id="3"></button>
-        <button class="tile" id="4"></button>
-        <button class="tile" id="5"></button>
-        <button class="tile" id="6"></button>
-        <button class="tile" id="7"></button>
-        <button class="tile" id="8"></button>
-    </div>
-    <div>
-        <button class="reset">RESET</button>
-    </div>
-    <div class="lower">
-        <p class="winner"></p>
-    </div>
+    <div class="main">
+        <div class="leftside">
+            <div class="userdiv">
+                <label for="user1">PLAYER ONE:</label>
+                <input type="text" class="textbox" id="user1" value="Player 1" placeholder="Player 1">
+            </div>
+            <div class="userdiv">
+                <label for="user2">PLAYER TWO:</label>
+                <input type="text" class="textbox" id="user2" value="Player 2" placeholder="Player 2">
+            </div>
 
+            <div>
+                <button class="submitusers">SUBMIT USERS</button>
+            </div>
+
+            <div class="playersstatus">
+                <p class="titles">PLAYERS:</p>
+                <p id="player1text">Player 1 is Naughts!</p>
+                <p id="player2text">Player 2 is Crosses!</p>
+            </div>
+
+            <div class="scoreboard">
+                <p class="titles">SCOREBOARD:</p>
+                <p id="p1wins">Player 1 has 0 wins!</p>
+                <p id="p2wins">Player 2 has 0 wins!</p>
+            </div>
+
+            <div>
+                <button class="resetboard">RESET BOARD</button>
+            </div>
+            <div>
+                <button class="resetgame">RESET GAME</button>
+            </div>
+
+            <div class="signiture">
+                <p>Made by David Bean</p>
+            </div>
+        </div>
+
+        
+        
+        <div class="rightside">
+            <h1 class="header">TIC TAC TOE</h1>
+            <div class="gameboard">
+                <button class="tile" id="0"></button>
+                <button class="tile" id="1"></button>
+                <button class="tile" id="2"></button>
+                <button class="tile" id="3"></button>
+                <button class="tile" id="4"></button>
+                <button class="tile" id="5"></button>
+                <button class="tile" id="6"></button>
+                <button class="tile" id="7"></button>
+                <button class="tile" id="8"></button>
+            </div>
+
+            <div class="lower">
+                <p class="playerturn">It's Player 1's turn!</p>
+                <p class="winner"></p>
+
+            </div>
+        </div>
+</div>
             
 </body>
 <script src="tictactoe.js"></script>
