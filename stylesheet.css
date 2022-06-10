@@ -23,6 +23,9 @@ body {
 
 .main {
     display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
     /* justify-content: space-between; */
 }
 
@@ -42,6 +45,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
 
 }
 
@@ -52,9 +56,9 @@ body {
 }
 
 .gameboard {
-    /* box-sizing: border-box; */
-    height: clamp(300px, 500px, 600px);
-    width: clamp(300px, 500px, 600px);
+    box-sizing: border-box;
+    /* max-height: 320px; */
+    /* max-width: 320px; */
     padding: 10px;
     border: 2px solid #00735b;;
     display: grid;
@@ -73,7 +77,8 @@ body {
 
 .tile {
     border-radius: 0.9rem;
-    width: 100%;
+    min-width: 100px;
+    min-height: 100px;
     background-color: #2e2e2e;
     border: 0;
     color: white;
@@ -90,7 +95,7 @@ body {
     padding-top: 20px;
 }
 
-.resetboard, .resetgame, .submitusers {
+.resetboard, .resetgame, .submitusers, .computer {
     width: 200px;
     height: 30px;
     background-color: #2e2e2e;
@@ -102,13 +107,13 @@ body {
     
 }
 
-.resetboard:disabled, .resetgame:disabled, .submitusers:disabled {
+.resetboard:disabled, .resetgame:disabled, .submitusers:disabled, .computer:disabled {
     opacity: 0.5;
 
 }
 
 label {
-    color: rgb(212, 255, 246);
+    color: #37a78e;
     font-size: 0.8rem;
     font-weight: 500;
 }
@@ -116,7 +121,7 @@ label {
 input {
     background-color: #2e2e2e;
     border-radius: 0.3rem;
-    border: solid 1px #00735b;;
+    border: solid 1px #00735b;
     margin-top: 2px;
     padding-left: 10px;
     height: 30px;
@@ -130,7 +135,7 @@ input:disabled {
 }
 
 .titles {
-    color: #119278;
+    color: #37a78e;
     font-size: 1rem;
     font-weight: 500;
     text-align: center;

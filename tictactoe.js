@@ -16,7 +16,6 @@ const gameboard = (() => {
         gamescore = gameboard.gamescore;
 
         const winner = document.querySelector(".winner");
-        // horizontal win
         if ((gamescore[0] === "x" && gamescore[1] === "x" && gamescore[2] === "x") || (gamescore[0] === "o" && gamescore[1] === "o" && gamescore[2] === "o")) {
             if (userTurn === "p1turn") {
                 tempWinner = game.player1.name;
@@ -27,8 +26,10 @@ const gameboard = (() => {
             }
             let displayWinner = tempWinner + " is the Winner!";
             winner.textContent = displayWinner;
+            addtile.forEach((tile) => {
+                tile.disabled = true;
+            })
             displayScoreboard();
-            // user1.wins += user1.wins;
         } else if ((gamescore[3] === "x" && gamescore[4] === "x" && gamescore[5] === "x") || (gamescore[3] === "o" && gamescore[4] === "o" && gamescore[5] === "o")) {
             if (userTurn === "p1turn") {
                 tempWinner = game.player1.name;
@@ -39,6 +40,9 @@ const gameboard = (() => {
             }
             let displayWinner = tempWinner + " is the Winner!";
             winner.textContent = displayWinner;
+            addtile.forEach((tile) => {
+                tile.disabled = true;
+            })
             displayScoreboard();
         } else if ((gamescore[6] === "x" && gamescore[7] === "x" && gamescore[8] === "x") || (gamescore[6] === "o" && gamescore[7] === "o" && gamescore[8] === "o")) {
             if (userTurn === "p1turn") {
@@ -50,6 +54,9 @@ const gameboard = (() => {
             }
             let displayWinner = tempWinner + " is the Winner!";
             winner.textContent = displayWinner;
+            addtile.forEach((tile) => {
+                tile.disabled = true;
+            })
             displayScoreboard();
         } else if ((gamescore[0] === "x" & gamescore[3] === "x" && gamescore[6] === "x") || (gamescore[0] === "o" && gamescore[3] === "o" && gamescore[6] === "o")) {
             if (userTurn === "p1turn") {
@@ -61,6 +68,9 @@ const gameboard = (() => {
             }
             let displayWinner = tempWinner + " is the Winner!";
             winner.textContent = displayWinner;
+            addtile.forEach((tile) => {
+                tile.disabled = true;
+            })
             displayScoreboard();
         } else if ((gamescore[1] === "x" && gamescore[4] === "x" && gamescore[7] === "x") || (gamescore[1] === "o" && gamescore[4] === "o" && gamescore[7] === "o")) {
             if (userTurn === "p1turn") {
@@ -72,6 +82,9 @@ const gameboard = (() => {
             }
             let displayWinner = tempWinner + " is the Winner!";
             winner.textContent = displayWinner;
+            addtile.forEach((tile) => {
+                tile.disabled = true;
+            })
             displayScoreboard();
         } else if ((gamescore[2] === "x" && gamescore[5] === "x" && gamescore[8] === "x") || (gamescore[2] === "o" && gamescore[5] === "o" && gamescore[8] === "o")) {
             if (userTurn === "p1turn") {
@@ -83,6 +96,9 @@ const gameboard = (() => {
             }
             let displayWinner = tempWinner + " is the Winner!";
             winner.textContent = displayWinner;
+            addtile.forEach((tile) => {
+                tile.disabled = true;
+            })
             displayScoreboard();
         } else if ((gamescore[0] === "x" && gamescore[4] === "x" && gamescore[8] === "x") || (gamescore[0] === "o" && gamescore[4] === "o" && gamescore[8] === "o")) {
             if (userTurn === "p1turn") {
@@ -94,6 +110,9 @@ const gameboard = (() => {
             }
             let displayWinner = tempWinner + " is the Winner!";
             winner.textContent = displayWinner;
+            addtile.forEach((tile) => {
+                tile.disabled = true;
+            })
             displayScoreboard();
         } else if ((gamescore[2] === "x" && gamescore[4] === "x" && gamescore[6] === "x") || (gamescore[2] === "o" && gamescore[4] === "o" && gamescore[6] === "o")) {
             if (userTurn === "p1turn") {
@@ -105,10 +124,16 @@ const gameboard = (() => {
             }
             let displayWinner = tempWinner + " is the Winner!";
             winner.textContent = displayWinner;
+            addtile.forEach((tile) => {
+                tile.disabled = true;
+            })
             displayScoreboard();
         } else if ((gamescore[0] !== "" && gamescore[1] !== "" && gamescore[2] !== "" && gamescore[3] !== "" && gamescore[4] !== "" && gamescore[5] !== "" && gamescore[6] !== "" && gamescore[7] !== "" && gamescore[8] !== "")) {
             let displayWinner = "The game is a draw!";
             winner.textContent = displayWinner;
+            addtile.forEach((tile) => {
+                tile.disabled = true;
+            })
         }
     }
 
@@ -135,6 +160,8 @@ const gameboard = (() => {
 })();
 
 const game = (() => {
+
+    let computer = false;
 
     const player1textbox = document.querySelector("#user1");
     const player2textbox = document.querySelector("#user2");
@@ -165,10 +192,14 @@ const game = (() => {
         submitusers.disabled = true;
         updateUsers();
         gameboard.displayTurn();
-
     }
 
     function switchUser() {
+
+        if (game.computer === true) {
+            computerTurn();
+        } else if (game.computer === false) {
+
         if (userTurn === "p1turn") {
             userTurn = "p2turn";
             userText = "x"
@@ -176,9 +207,57 @@ const game = (() => {
             userTurn = "p1turn";
             userText = "o"
         }
+
+        }
     }
 
-    return {switchUser, updateUsers, player1, player2, submitusers}
+    const computerbutton = document.querySelector(".computer");
+    computerbutton.addEventListener("click", computerActivate);
+
+    function computerActivate() {
+
+        resetGame();
+        computerbutton.disabled = true;
+        submitusers.disabled = true;
+        player1.name = player1textbox.value;
+        player2.name = "Computer";
+        player1textbox.setAttribute("disabled", "");
+        player2textbox.setAttribute("disabled", "");
+        updateUsers();
+        gameboard.displayTurn();
+        game.computer = true;
+    }
+
+    function computerTurn() {
+        userText = "x";
+        const randomtile = Math.floor((Math.random() * 9));
+        console.log(randomtile);
+
+        addtile.forEach((tile) => {
+            if (tile.id == randomtile) {
+                if (tile.textContent === "") {
+                    gameboard.gamescore.splice(tile.id, 1, userText);
+                    tile.textContent = gameboard.gamescore[tile.id];
+                    tile.classList.add("taken");
+                    tile.disabled = true;
+                    userTurn = "p2turn";
+                    gameboard.winnerCheck();
+                    
+                } else {
+                    computerTurn();
+                }
+            } else {
+
+            }
+        })
+
+        userText = "o";
+        userTurn = "p1turn";
+        gameboard.displayTurn();
+        
+    }
+
+    return {switchUser, updateUsers, player1, player2, submitusers, computerbutton, computer}
 
 })();
 
@@ -188,6 +267,7 @@ addtile.forEach((tile) => {
 
             gameboard.gamescore.splice(tile.id, 1, userText);
             tile.textContent = gameboard.gamescore[tile.id];
+            tile.classList.add("taken");
             tile.disabled = true;
             gameboard.winnerCheck();
 
@@ -205,25 +285,29 @@ addtile.forEach((tile) => {
 
 function resetBoard() {
     gameboard.gamescore = ["", "", "", "", "", "", "", "", ""];
-
-    if (userTurn === "p2turn") {
-        userTurn = "p1turn"
-        userText = "o"
-    } else if (userTurn === "p1turn") {
-        userTurn = "p2turn"
-        userText = "x"
-    };
-    gameboard.displayTurn();
+    addtile.forEach((tile) => {
+        tile.classList.remove("taken");
+    })
     addtile.forEach((tile) => {
         tile.textContent = "";
         tile.disabled = false;
     })
     const winner = document.querySelector(".winner");
+    if (winner.textContent === "Computer is the Winner!") {
+
+    } else {
+        game.switchUser();
+    }   
     winner.textContent = "";
+    gameboard.displayTurn();
 }
 
 function resetGame() {
-
+    game.computer = false;
+    game.computerbutton.disabled = false;
+    addtile.forEach((tile) => {
+        tile.classList.remove("taken");
+    })
     game.submitusers.disabled = false;
     const player1textbox = document.querySelector("#user1");
     const player2textbox = document.querySelector("#user2");
@@ -245,7 +329,6 @@ function resetGame() {
     game.updateUsers();
     gameboard.displayScoreboard();
     gameboard.displayTurn();
-    
 }
 
 const resetboard = document.querySelector(".resetboard");
@@ -253,6 +336,3 @@ resetboard.addEventListener("click", resetBoard);
 
 const resetgame = document.querySelector(".resetgame")
 resetgame.addEventListener("click", resetGame);
-
-// Maybe make mobile friendly.
-// Maybe make some AI to be user 2.
